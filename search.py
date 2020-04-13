@@ -40,7 +40,32 @@ def binary_search(array, item):
 
 def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
-    pass
+    starting_array = array
+    array.sort()
+    midpoint = len(array) // 2
+    # gets midpoint
+    count = len(array)
+    while count > 1:
+        if array[midpoint] == item:
+            return index
+        elif array[midpoint] < item:
+            array = array[0: midpoint]
+            midpoint = len(array) // 2
+            print('new midpoint:', midpoint)
+            count = len(array)
+            print('count:', count)
+        elif array[midpoint] > item:
+            end_of_array = len(array)
+            array = array[midpoint: end_of_array]
+            midpoint = len(array) // 2
+            print('new midpoint:', midpoint)
+            count = len(array)
+            print('count:', count)
+    print('midpoint:', midpoint)
+    print('item at midpoint', array[midpoint])
+    if array[midpoint] == item:
+        return index
+
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
 
