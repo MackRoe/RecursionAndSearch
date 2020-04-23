@@ -72,6 +72,23 @@ def binary_search_iterative(array, item):
 
 def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
-    pass
+    if left is None:
+        left = 0
+    if right is None:
+        right = len(array)-1
+
+    # find midpoint
+    midpoint = ((right - left)//2) + left
+    current_mid = array[midpoint]
+
+    if item == curr_item:  # found
+        return midpoint
+    elif right == left:
+        return None         # not found
+
+    if current_mid > item:
+        return binary_search_recursive(array, item, left, midpoint-1)
+    else:
+        return binary_search_recursive(array, item, midpoint+1, right)
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
